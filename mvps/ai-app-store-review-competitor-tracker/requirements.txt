@@ -1,0 +1,13 @@
+# The full meta package: pulls agent-framework-core plus every provider client,
+# so MODEL_PROVIDER can be switched to any supported value without reinstalling.
+agent-framework>=1.12
+pydantic>=2.7
+pydantic-settings>=2.3
+python-dotenv>=1.0
+streamlit>=1.38
+# App Store lookup and review-feed HTTP calls. Both endpoints are free and
+# keyless, so no client SDK is needed beyond a plain HTTP client.
+httpx>=0.27
+# Google Play has no official free API for a competitor's app; this scrapes
+# Play's own public app/search/review pages. Unofficial, no published SLA.
+google-play-scraper>=1.2.6

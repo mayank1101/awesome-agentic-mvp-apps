@@ -2,7 +2,7 @@
 
 **Description:** The prompt-fencing block every other skill in this folder ends with. Paste it at the bottom of a system prompt whenever the model will read text it did not write — a pasted brief, a retrieved web page, a corpus passage, a candidate's answer.
 
-**Use with:** [prd-generator](prd-generator.md), [pm-interview-coach](pm-interview-coach.md), [competitor-analyst](competitor-analyst.md), [grounded-faq-answerer](grounded-faq-answerer.md).
+**Use with:** [prd-generator](prd-generator.md), [pm-interview-coach](pm-interview-coach.md), [competitor-analyst](competitor-analyst.md), [review-gap-analyst](review-gap-analyst.md), [grounded-faq-answerer](grounded-faq-answerer.md).
 
 ---
 
