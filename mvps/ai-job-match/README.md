@@ -21,7 +21,7 @@ Scores are computed algorithmically over verified per-requirement coverage rathe
 * **Semantic Backstop:** Requirement matches are evaluated via `mistral-embed` cosine similarity (or lexical overlap as fallback). Claims categorized as "covered" by the LLM without strong semantic grounding in the candidate's text are automatically downgraded by the evaluation engine.
 
 ### 2. Zero-Fabrication Resume Rewriting
-The tailoring engine aligns existing career achievements with target posting terminology while passing through rigorous mechanical validation ([`provenance.py`](file:///Users/mayanksharma09/Projects/abc/agentic-launchpad/mvps/ai-job-match/app/services/provenance.py)):
+The tailoring engine aligns existing career achievements with target posting terminology while passing through rigorous mechanical validation ([`provenance.py`](app/services/provenance.py)):
 * **Numerical Fidelity:** Every metric, percentage, or quantitative claim in the rewritten output must exist in the source document.
 * **Entity Verification:** All employers, technologies, tools, and certifications (e.g., `Kubernetes`, `PostgreSQL`, `AWS`) are validated against original text tokens.
 * **Contact Preservation:** Headers, links, and contact addresses are locked to prevent corruption or replacement.

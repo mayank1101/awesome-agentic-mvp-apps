@@ -1,8 +1,8 @@
-# 🚀 Agentic Launchpad
+# Awesome Agentic MVP Apps
 
-![Agentic Launchpad Banner](assets/agentic-banner.png)
+![Awesome Agentic MVP Apps](assets/agentic-banner.png)
 
-**Agentic Launchpad** is a production-grade engineering reference architecture and open-source collection of AI agent applications, standalone micro-agent modules, system skills, and Vector RAG pipelines. Designed as an industry-standard boilerplate, each system component prioritizes modularity, strict type safety, defensive security, and containerized deployment.
+**Awesome Agentic MVP Apps** is a production-grade engineering reference architecture and open-source collection of AI agent applications, standalone micro-agent modules, system skills, and Vector RAG pipelines. Designed as an industry-standard boilerplate, each system component prioritizes modularity, strict type safety, defensive security, and containerized deployment.
 
 ---
 
@@ -20,7 +20,7 @@ Unlike minimal API wrappers or fragile LLM scripts, every component in this repo
 
 ## 🧰 Standardized Tech Stack
 
-To prevent architectural drift and ensure reliable maintenance across all applications and micro-agents, Agentic Launchpad employs a standardized, highly vetted engineering stack:
+To prevent architectural drift and ensure reliable maintenance across all applications and micro-agents, Awesome Agentic MVP Apps employs a standardized, highly vetted engineering stack:
 
 | Layer / Domain | Core Technology | Usage & Architectural Purpose |
 | :--- | :--- | :--- |
@@ -144,7 +144,7 @@ Structured system instructions and domain skill sets designed to power reliable 
 
 ## 🤝 Contribution & Standards
 
-This project operates as an extensible engineering launchpad. When contributing new components:
+This project operates as an extensible engineering reference. When contributing new components:
 1. Ensure all system boundaries are typed with **Pydantic v2**.
 2. Implement structural guardrails (prompt fencing, input validation, output sanitization).
 3. Include comprehensive automated test coverage (`pytest`) and code formatting (`ruff`).
