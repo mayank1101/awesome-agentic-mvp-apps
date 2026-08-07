@@ -1,0 +1,43 @@
+[project]
+name = "ai-prd-generator-mvp"
+version = "0.1.0"
+description = "Turns a short product brief into a full PRD, using Microsoft Agent Framework."
+requires-python = ">=3.11"
+
+# Runtime dependencies are pinned in requirements.txt; this file exists for tool
+# configuration, so the lint rules travel with the repo.
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "I",   # import sorting
+    "UP",  # pyupgrade
+    "B",   # bugbear
+    "SIM", # simplify
+    "D",   # docstrings
+]
+ignore = [
+    "D203",  # conflicts with D211
+    "D213",  # conflicts with D212
+    "E501",  # long lines are prompt text, which reads worse when wrapped
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Streamlit scripts are executed top to bottom, so module-level calls are the
+# idiom rather than a smell.
+"streamlit_app.py" = ["E402"]
+# Test names describe themselves; a docstring on each would just repeat them.
+"tests/*" = ["D103"]
+
+[tool.pytest.ini_options]
+# So `pytest` works from the repo root without a PYTHONPATH dance.
+pythonpath = ["."]
+testpaths = ["tests"]

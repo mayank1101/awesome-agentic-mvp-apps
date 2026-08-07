@@ -1,0 +1,35 @@
+# shadcn-inspired light theme with an indigo accent
+[theme]
+base = "light"
+primaryColor = "#4F46E5"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#FAFAFA"
+codeBackgroundColor = "#F4F4F5"
+textColor = "#09090B"
+linkColor = "#4F46E5"
+borderColor = "#E4E4E7"
+showWidgetBorder = true
+showSidebarBorder = true
+baseRadius = "8px"
+buttonRadius = "8px"
+font = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+codeFontSize = "0.875rem"
+codeTextColor = "#18181B"
+baseFontSize = 14
+baseFontWeight = 400
+headingFontSizes = ["30px", "24px", "20px", "17px", "15px", "14px"]
+headingFontWeights = [650, 600, 600, 600, 600, 600]
+linkUnderline = false
+chartCategoricalColors = ["#4F46E5", "#8B5CF6", "#71717A", "#3B82F6", "#22C55E", "#EF4444"]
+
+grayColor = "#71717A"
+blueColor = "#3B82F6"
+greenColor = "#22C55E"
+redColor = "#EF4444"
+yellowColor = "#EAB308"
+orangeColor = "#F97316"
+violetColor = "#8B5CF6"
+
+dataframeBorderColor = "#E4E4E7"
+dataframeHeaderBackgroundColor = "#FAFAFA"

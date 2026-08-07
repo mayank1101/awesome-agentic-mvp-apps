@@ -1,0 +1,51 @@
+# Runtime dependencies. Python 3.11.10 (see .python-version).
+#
+# Everything here is a pure-Python wheel. That is a hard requirement, not a
+# preference: the deployment target is Streamlit Community Cloud, ~1GB of RAM and
+# no GPU, and this repo has already been bitten once by two native wheels that
+# each bundle OpenMP and cannot share a process. Embeddings are hosted for the
+# same reason.
+
+streamlit>=1.38
+
+# Not a direct dependency, and not optional. Streamlit declares `starlette<2`,
+# but starlette 1.4.0 changed `GZipResponder.__init__` to require
+# `thread_minimum_size`, which Streamlit 1.61's gzip middleware does not pass:
+#
+#   TypeError: GZipResponder.__init__() missing 1 required keyword-only
+#   argument: 'thread_minimum_size'
+#
+# Every request then 500s and the browser shows "Connection error" -- the app
+# serves its HTML shell and nothing else. Raise this cap only after checking that
+# the app still loads in a browser, not just that pip resolved.
+starlette<1.4
+pydantic>=2.7
+pydantic-settings>=2.3
+python-dotenv>=1.0
+
+# The only model provider. Groq's OpenAI-compatible SDK, used directly rather
+# than through an agent framework: this app makes four independent, stateless
+# calls with no tools and no conversation, so an orchestrator would add a
+# dependency and take nothing away.
+groq>=0.11
+
+# Embeddings (`mistral-embed`) are called over plain HTTP -- one endpoint, one
+# request shape. `httpx` arrives with the Groq SDK anyway.
+httpx>=0.27
+
+# Resume intake and output.
+pypdf>=5.0
+fpdf2>=2.7
+
+# Validation layer. The validators are defined locally in
+# `app/services/validation.py` rather than installed from Guardrails Hub, so no
+# hub token or build-time network call is needed.
+guardrails-ai>=0.6,<0.8
+
+# Not a direct dependency: `guardrails-ai` pulls `litellm`, and litellm 1.95.0
+# added a Rust extension (`litellm-rust`) that has no wheel for every
+# platform/toolchain pair -- on this machine it tried to compile through maturin
+# and failed on the installed rustc. Capping below it keeps the whole install
+# pure-Python wheels, which is the property the Streamlit Cloud target needs.
+# Remove the cap once litellm ships wheels you can install everywhere you deploy.
+litellm<1.95

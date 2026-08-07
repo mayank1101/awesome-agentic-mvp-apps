@@ -1,0 +1,12 @@
+# Lint + format. Config lives in pyproject.toml.
+#   ruff check .    ruff format .
+ruff>=0.6
+
+# Test runner. Config lives in pyproject.toml.
+#   pytest
+pytest>=8.0
+
+# Real PDFs for the resume-intake tests. Not a runtime dependency: this app
+# reads PDFs, it never writes one, and a mocked extractor would prove nothing --
+# every bug this module has had was in what a real PDF actually yields.
+fpdf2>=2.7

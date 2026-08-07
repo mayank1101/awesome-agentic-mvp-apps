@@ -1,0 +1,8 @@
+# The full meta package: pulls agent-framework-core plus provider clients.
+agent-framework>=1.12
+pydantic>=2.7
+pydantic-settings>=2.3
+python-dotenv>=1.0
+streamlit>=1.38
+# Tavily search SDK pinned with an upper bound per E-26.
+tavily-python>=0.5.0,<1.0.0

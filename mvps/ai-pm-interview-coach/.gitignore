@@ -1,0 +1,80 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ruff and other tooling caches
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Local databases and logs (SQLite, dev logging)
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Environment variables & local keys
+.env
+# Streamlit secrets: the local twin of the Community Cloud secrets panel.
+.streamlit/secrets.toml
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# AI Agent & Assistant configurations, logs, rules, and metadata
+.claude/
+.claude.json
+claude.json
+CLAUDE.md
+CLAUDE.local.md
+.agents/
+.agent/
+.agentic/
+AGENTS.md
+AGENTS.local.md
+.gemini/
+.antigravity/
+.cursor/
+.cursorrules
+.cursorignore
+.cursorindex
+.cursorindexing
+.copilot/
+.codex/
+.aider*
+.windsurf/
+.windsurfrules
+.codeium/
+.v0/
+brain/
+.brain/
+.system_generated/
+*.transcript
+*.transcript.json
+*.chat
+*.chat.json
+docs/

@@ -1,0 +1,46 @@
+# Runtime dependencies. Python 3.11.10 (see .python-version).
+#
+# Everything here is a pure-Python wheel. That is a hard requirement, not a
+# preference: the deployment target is Streamlit Community Cloud, ~1GB of RAM and
+# no GPU. Embeddings are hosted for the same reason -- a local sentence
+# transformer plus torch does not fit the container, and this repo has already
+# been bitten once by two native wheels that each bundle OpenMP and cannot share
+# a process.
+
+streamlit>=1.38
+
+# Not a direct dependency, and not optional. Streamlit declares `starlette<2`,
+# but starlette 1.4.0 changed `GZipResponder.__init__` to require
+# `thread_minimum_size`, which Streamlit's gzip middleware does not pass:
+#
+#   TypeError: GZipResponder.__init__() missing 1 required keyword-only
+#   argument: 'thread_minimum_size'
+#
+# Every request then 500s and the browser shows "Connection error" -- the app
+# serves its HTML shell and nothing else. Raise this cap only after checking that
+# the app still loads in a browser, not just that pip resolved.
+starlette<1.4
+pydantic>=2.7
+pydantic-settings>=2.3
+python-dotenv>=1.0
+
+# The only model provider. Groq's OpenAI-compatible SDK, used directly rather
+# than through an agent framework: every call this app makes is one stateless
+# extraction with no tools and no conversation, and the orchestration that does
+# exist (search, fetch, score, in that order) is a plain loop over a fixed
+# sequence -- not something a model chooses. An agent framework would add a
+# dependency and take nothing away.
+groq>=0.11
+
+# The only web access in this app. Tavily's search endpoint is called with a
+# domain whitelist, and its extract endpoint pulls the full text of the postings
+# that get deeply scored. Both are one endpoint with one request shape, so they
+# go over plain `httpx` rather than the Tavily SDK -- same reason the embedding
+# calls do. `httpx` arrives with the Groq SDK anyway.
+#
+# There is no scraper here and no headless browser. Everything this app reads
+# from the web comes back through these two endpoints.
+httpx>=0.27
+
+# Resume intake.
+pypdf>=5.0

@@ -1,0 +1,9 @@
+# The full meta package: pulls agent-framework-core plus every provider client,
+# so MODEL_PROVIDER can be switched to any supported value without reinstalling.
+agent-framework>=1.12
+# Azure AI Foundry authenticates with an Azure credential rather than an API key.
+azure-identity>=1.19
+pydantic>=2.7
+pydantic-settings>=2.3
+python-dotenv>=1.0
+streamlit>=1.38

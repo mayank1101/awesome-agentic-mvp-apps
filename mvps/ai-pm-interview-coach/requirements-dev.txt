@@ -1,0 +1,11 @@
+# Lint + format. Config lives in pyproject.toml.
+#   ruff check .    ruff format .
+ruff>=0.6
+
+# Test runner. Config lives in pyproject.toml.
+#   pytest                  everything except the live-model test
+#   pytest -m integration   the live-model test, needs a real key
+pytest>=8.0
+
+# The opt-in live-model test is written with async test functions.
+pytest-asyncio>=0.24
