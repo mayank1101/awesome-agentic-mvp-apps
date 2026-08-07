@@ -112,6 +112,7 @@ Self-contained, pure Python agent modules stripped of web UI dependencies. Engin
 
 * **Supported Module Library**:
   * `Competitor Analyser Agent` — 6-dimension competitor profiling with live search & simulated offline fallback.
+  * `Review Gap Analyser Agent` — App Store / Google Play competitor review pulling with citation-grounded feature-gap clustering; zero external deps for iOS, optional `google-play-scraper` for Android.
   * `PRD Generator Agent` — Structured specification drafting and outline expansion.
   * `PM Interview Coach Agent` — Interactive dialog generation and rubric-anchored evaluation.
   * `Job Match Agent` — Deterministic resume requirement fit evaluation and zero-fabrication ATS resume tailoring.
@@ -124,6 +125,13 @@ Self-contained, pure Python agent modules stripped of web UI dependencies. Engin
   prd = agent.generate(PRDInput(product_name="Smart Alerts", problem_statement="DevOps alert fatigue remediation."))
   print(prd.to_markdown())
   ```
+  ```python
+  from ai_agents.review_gap_analyser_agent import ReviewGapAnalyserAgent, AppQuery, Platform
+
+  agent = ReviewGapAnalyserAgent(model="gpt-4o-mini", provider="openai")
+  report = agent.analyze(AppQuery(platform=Platform.ANDROID, query="com.spotify.music", country="in"))
+  print(report.to_markdown())
+  ```
 
 ---
 
@@ -133,6 +141,7 @@ Structured system instructions and domain skill sets designed to power reliable 
 
 * **Featured Skills**:
   * [Competitor Analyst](ai-skills/competitor-analyst.md) — Six-section intelligence briefing with explicit missing data abstention rules.
+  * [Review Gap Analyst](ai-skills/review-gap-analyst.md) — Clusters critical App Store / Google Play reviews into cited feature gaps; the model cites review ids, never writes an excerpt.
   * [PRD Generator](ai-skills/prd-generator.md) — Outline generation and word-budgeted sectional document expansions.
   * [PM Interview Coach](ai-skills/pm-interview-coach.md) — Strict interviewer question frameworks and evidence-quoted evaluation criteria.
   * [Resume Job Fit](ai-skills/resume-job-fit.md) — Requirement extraction and factual evidence mapping between resumes and single postings without numerical score hallucinations.

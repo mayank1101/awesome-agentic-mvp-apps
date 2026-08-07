@@ -1,0 +1,49 @@
+[project]
+name = "app-store-review-competitor-tracker"
+version = "0.1.0"
+description = "Pulls a competitor's recent App Store or Google Play reviews and runs a feature-gap analysis over the critical ones, using Microsoft Agent Framework."
+requires-python = ">=3.11"
+
+# Runtime dependencies are pinned in requirements.txt; this file exists for tool
+# configuration, so the lint rules travel with the repo.
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["docs"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "I",   # import sorting
+    "UP",  # pyupgrade
+    "B",   # bugbear
+    "SIM", # simplify
+    "D",   # docstrings
+]
+ignore = [
+    "D203",  # conflicts with D211
+    "D213",  # conflicts with D212
+    "E501",  # long lines are prompt text, which reads worse when wrapped
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Streamlit scripts are executed top to bottom, so module-level calls are the
+# idiom rather than a smell.
+"streamlit_app.py" = ["E402"]
+"tests/*" = ["D100", "D101", "D102", "D103", "D104", "D107"]
+"__init__.py" = ["D104"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = [
+    "live: marks tests requiring real API keys and live network calls",
+]
+# Live tests are opt-in: `pytest -m live`. The default suite is offline and
+# deterministic, so a missing key or a flaky endpoint is never why a run is red.
+addopts = "-m 'not live'"
