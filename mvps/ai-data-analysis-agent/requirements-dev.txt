@@ -1,0 +1,7 @@
+# Lint + format. Config lives in pyproject.toml.
+#   ruff check .    ruff format .
+ruff>=0.6
+
+# Test runner. Config lives in pyproject.toml.
+#   pytest
+pytest>=8.0

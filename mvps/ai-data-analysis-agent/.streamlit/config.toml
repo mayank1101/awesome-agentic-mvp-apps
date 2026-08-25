@@ -1,0 +1,13 @@
+# Server settings for local runs and Streamlit Community Cloud.
+#
+# The Docker image passes the same values on the command line; this file is what
+# makes `streamlit run streamlit_app.py` behave identically.
+
+[server]
+# Matches MAX_UPLOAD_BYTES in the application settings. Without it Streamlit
+# advertises 200MB in the uploader and buffers a 200MB file into memory before
+# the app gets a chance to reject it.
+maxUploadSize = 10
+
+[browser]
+gatherUsageStats = false

@@ -1,0 +1,54 @@
+[project]
+name = "ai-travel-agent"
+version = "0.1.0"
+description = "Searches the web for activities, accommodation, and tips for a destination, then synthesises a day-by-day itinerary grounded in what it found."
+requires-python = ">=3.11"
+
+# Runtime dependencies are pinned in requirements.txt; this file exists for tool
+# configuration, so the lint rules travel with the repo.
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "I",   # import sorting
+    "UP",  # pyupgrade
+    "B",   # bugbear
+    "SIM", # simplify
+    "D",   # docstrings
+]
+ignore = [
+    "D203",  # conflicts with D211
+    "D213",  # conflicts with D212
+    "E501",  # long lines are prompt text, which reads worse when wrapped
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Streamlit scripts are executed top to bottom, so module-level calls are the
+# idiom rather than a smell.
+"streamlit_app.py" = ["E402"]
+# Test names describe themselves; a docstring on each would just repeat them.
+"tests/*" = ["D100", "D101", "D102", "D103", "D104", "D107"]
+"__init__.py" = ["D104"]
+# A short-word deny/allow list. A list literal would read one word per line
+# after formatting -- 18 lines nobody reviews as a diff; a split string stays
+# a readable row.
+"app/services/search.py" = ["SIM905"]
+
+[tool.pytest.ini_options]
+# So `pytest` works from the repo root without a PYTHONPATH dance.
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = [
+    "live: marks tests requiring real API keys and live service calls",
+]
+# Live tests are opt-in: `pytest -m live`. The default suite is offline and
+# deterministic, so a missing key is never the reason a run is red.
+addopts = "-m 'not live'"

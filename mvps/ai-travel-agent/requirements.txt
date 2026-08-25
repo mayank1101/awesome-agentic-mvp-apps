@@ -1,0 +1,20 @@
+# Runtime dependencies. Python 3.11.10 (see .python-version).
+#
+# Everything here is a pure-Python wheel. No model weights, no vector store, no
+# native toolchain -- the build is seconds, and the same property is what lets
+# this run on Streamlit Community Cloud inside ~1GB of RAM.
+
+streamlit>=1.38
+pydantic>=2.7
+pydantic-settings>=2.3
+python-dotenv>=1.0
+
+# The only model provider. Groq's SDK, used directly rather than through an
+# agent framework: this app makes one stateless call per run with no tools and
+# no multi-turn conversation state, so an orchestrator would add a dependency
+# and take nothing away.
+groq>=0.11
+
+# Web search (Tavily), over plain HTTP -- one endpoint, one request shape. An
+# SDK would be a dependency that saves nothing.
+httpx>=0.27

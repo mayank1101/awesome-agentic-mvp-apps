@@ -1,0 +1,7 @@
+# Server settings for local runs and Streamlit Community Cloud.
+
+[server]
+maxUploadSize = 5
+
+[browser]
+gatherUsageStats = false

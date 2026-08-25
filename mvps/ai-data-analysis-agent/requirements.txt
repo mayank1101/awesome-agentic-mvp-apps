@@ -1,0 +1,20 @@
+# Runtime dependencies. Python 3.11.10 (see .python-version).
+#
+# Everything here is a pure-Python wheel except pandas/numpy, which ship
+# prebuilt wheels for every common platform. No native toolchain is needed to
+# install this app.
+
+streamlit>=1.38
+pydantic>=2.7
+pydantic-settings>=2.3
+python-dotenv>=1.0
+
+# The only model provider. Groq's SDK, used directly rather than through an
+# agent framework: this app makes two or three independent, stateless calls
+# per question with no tools and no multi-turn conversation state, so an
+# orchestrator would add a dependency and take nothing away.
+groq>=0.11
+
+# Data intake and the engine every generated-code answer runs against.
+pandas>=2.2
+numpy>=1.26
